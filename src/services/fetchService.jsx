@@ -15,7 +15,7 @@ class FetchService {
     }
 
     let response = await fetch(
-      `http://www.omdbapi.com/?apikey=${this._apiKey}&s=${filmName}${selected}`
+      `https://www.omdbapi.com/?apikey=${this._apiKey}&s=${filmName}${selected}`
     );
     if (!response) {
       throw new Error('didnt fetch');
