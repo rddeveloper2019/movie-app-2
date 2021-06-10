@@ -13,7 +13,7 @@ class Main extends Component {
   getFilms = new FetchService();
 
   componentDidMount() {
-    this.getFilms.getFilmsByName('movie', 'all').then((res) => {
+    this.getFilms.getFilmsByName('matrix', 'all').then((res) => {
       this.setState({ films: res, loading: false });
     });
   }
@@ -28,9 +28,15 @@ class Main extends Component {
 
   getFilmsByName = (name, category) => {
     this.setState({ loading: true });
-    this.getFilms.getFilmsByName(name, category).then((res) => {
-      this.setState({ films: res, loading: false });
-    });
+    this.getFilms
+      .getFilmsByName(name, category)
+      .then((res) => {
+        this.setState({ films: res, loading: false });
+      })
+      .catch((e) => {
+        console.error(e);
+        this.setState({ loading: false });
+      });
   };
 
   render() {

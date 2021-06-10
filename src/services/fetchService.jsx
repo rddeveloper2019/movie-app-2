@@ -2,7 +2,7 @@ const apiKey = process.env.REACT_APP_API_KEY;
 
 class FetchService {
   constructor() {
-    this._urlApi = 'http://www.omdbapi.com/?apikey=';
+    this._urlApi = 'https://www.omdbapi.com/?apikey=';
     this._apiKey = apiKey;
   }
 
@@ -10,8 +10,9 @@ class FetchService {
     let selected;
     if (category === 'all') {
       selected = '';
+    } else {
+      selected = `&type=${category}`;
     }
-    selected = `&type=${category}`;
 
     let response = await fetch(
       `http://www.omdbapi.com/?apikey=${this._apiKey}&s=${filmName}${selected}`
